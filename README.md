@@ -10,6 +10,8 @@ Technologies include:
 * JQuery-based Minesweeper written by [Nick Arocho](http://www.nickarocho.com/) and [available on GitHub](https://github.com/nickarocho/minesweeper).
 * Backend based on [Quarkus](https://quarkus.io) to persist scoreboard and provide a reactive frontend and backend connected to [Postgres](https://azure.microsoft.com/en-us/services/postgresql/).
 
+* Technologies demonstrated here includes: [Quarkus](https://quarkus.io), [Quarkus extensions](https://quarkus.io/version/main/guides/deploying-to-kubernetes#introduction-to-the-service-binding-operator), [Service Binding Operator](https://github.com/redhat-developer/service-binding-operator#known-bindable-operators)
+
 -----------
 ```
 # To run quarkus in dev mode (it will automatically use Quarkus' dev services to create a DB)
