@@ -53,7 +53,7 @@ spec:
             value: $(params.revision)
       # Customize this task if you like, or just do a taskRef
       # to one of the hub task.
-      - name: noop-task
+      - name: package-build-deploy
         runAfter:
           - fetch-repository
         workspaces:
@@ -63,11 +63,11 @@ spec:
           workspaces:
             - name: source
           steps:
-            - name: noop-task
-              image: registry.access.redhat.com/ubi8/ubi-micro:8.5
+            - name: package-build-deploy
+              image: quay.io/rhtevan/quarkus-cli:latest
               workingDir: $(workspaces.source.path)
-              script: |
-                exit 0
+              script: |-
+                quarkus build --no-tests -Dquarkus.kubernetes.deploy=true
   workspaces:
   - name: source
     volumeClaimTemplate:
