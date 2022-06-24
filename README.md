@@ -36,3 +36,5 @@ oc delete servicebindings.binding.operators.coreos.com microsweeper-appservice-p
 # To create a PAC Repository at test namespace executes the following
 oc apply -f .kubernetes/openshift.yml
 ```
+---
+Date: 2022-06-24
