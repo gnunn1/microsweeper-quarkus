@@ -2,6 +2,12 @@
 ################################################################################
 # The KRMs in this yaml file are used by a CI/CD pipeline to build and 
 # deployment application to a TEST cluster/environment
-################################################################################# 
-...
+#################################################################################
+apiVersion: pipelinesascode.tekton.dev/v1alpha1
+kind: Repository
+metadata:
+  name: rhtevan-microsweeper-quarkus
+  namespace: test
+spec:
+  url: 'https://github.com/rhtevan/microsweeper-quarkus'
 

@@ -67,7 +67,7 @@ spec:
               image: quay.io/rhtevan/quarkus-cli:latest
               workingDir: $(workspaces.source.path)
               script: |-
-                quarkus build --no-tests -Dquarkus.kubernetes.deploy=true
+                quarkus build --no-tests -Dquarkus.kubernetes.deploy=true -Dquarkus.profile=pac
   workspaces:
   - name: source
     volumeClaimTemplate:
