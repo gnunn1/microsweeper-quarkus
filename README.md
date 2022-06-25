@@ -22,8 +22,6 @@ q dev
 
 # To deploy and run quarkus application in an OpenShift cluster
 # (Required Operators: SeviceBinding, Crunchy Postgres for Kubernetes)
-# (Possible issue): Need to have this clusterrolebinding for the user if it is not a cluster-admin, e.g.
-#    oc adm policy add-cluster-role-to-user clusterworkloadresourcemappings.servicebinding.io-v1alpha3-admin user1
 oc project dev
 q build --no-tests --clean -Dquarkus.kubernetes.deploy=true
 
@@ -36,7 +34,13 @@ oc delete servicebindings.binding.operators.coreos.com microsweeper-appservice-p
 ```
 # By default, a 'test' namespace/project need to be setup for PAC-based CI/CD
 # To create a PAC Repository at test namespace executes the following
-oc apply -f .kubernetes/openshift.yml
+oc apply -f .argocd/repository.yaml
 ```
+* The Service Binding Operator [doc](https://redhat-developer.github.io/service-binding-operator/userguide/exposing-binding-data/rbac-requirements.html) and this [github issue](https://github.com/redhat-developer/service-binding-operator/issues/810) provide more details for the RBAC requirements.   
+(Possible bug), Not sure why need to have a clusterrolebinding for the user if it is not a cluster-admin, e.g.
+```
+oc adm policy add-cluster-role-to-user clusterworkloadresourcemappings.servicebinding.io-v1alpha3-admin user1
+```
+
 ---
-Date: 2022-06-24
+Date: 2022-06-25
