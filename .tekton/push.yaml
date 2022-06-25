@@ -69,10 +69,6 @@ spec:
               script: |-
                 #!/usr/bin/env bash
                 set -eux
-                # Need to check ServiceBinding required RBAC (A temporary workaround as follows)
-                oc login -u admin -p ocpadmin --insecure-skip-tls-verify=true https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}
-                oc project test
-                
                 # quarkus cli will compile, package jar, generate k8s/ocp manifests and deploy
                 quarkus build --no-tests -Dquarkus.kubernetes.deploy=true -Dquarkus.profile=pac
   workspaces:

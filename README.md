@@ -22,6 +22,8 @@ q dev
 
 # To deploy and run quarkus application in an OpenShift cluster
 # (Required Operators: SeviceBinding, Crunchy Postgres for Kubernetes)
+# (Possible issue): Need to have this clusterrolebinding for the user if it is not a cluster-admin, e.g.
+#    oc adm policy add-cluster-role-to-user clusterworkloadresourcemappings.servicebinding.io-v1alpha3-admin user1
 oc project dev
 q build --no-tests --clean -Dquarkus.kubernetes.deploy=true
 

@@ -1,11 +1,28 @@
+---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
-  name: openshift-pipelines-admin
+  name: clusterworkloadresourcemappings.servicebinding.io-v1alpha3-admin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: admin
+  name: clusterworkloadresourcemappings.servicebinding.io-v1alpha3-admin
 subjects:
 - kind: ServiceAccount
   name: pipeline
+  namespace: test
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: user1-clusterworkloadresourcemappings-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: clusterworkloadresourcemappings.servicebinding.io-v1alpha3-admin
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: user1
+
+
