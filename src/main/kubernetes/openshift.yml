@@ -7,6 +7,9 @@
 # That manual test deployment should happen before a commit & push to github
 # which will then trigger a CI/CD pipeline to build and deployment application to
 # a TEST cluster/environment
+#
+# NOTE: quarkus openshift extension recognizes YAML file with filename extension
+#       .yml ONLY
 ################################################################################# 
 # PostgreSQL DB CR (Bindable Operator)
 apiVersion: postgres-operator.crunchydata.com/v1beta1

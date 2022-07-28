@@ -1,0 +1,25 @@
+# Container file for a DIY quarkus-cli image based on openshift cli tool
+FROM quay.io/openshift/origin-cli:latest
+
+LABEL com.redhat.demo.image.authors="evan.zhang@redhat.com" 
+LABEL io.k8s.display-name="Quarkus CLI" 
+LABEL io.k8s.description="The quarkus command lets you create projects, manage extensions and do essential build and dev commands using the underlying project build tool." 
+LABEL io.openshift.tags="quarkus,cli"
+
+RUN groupadd -r -f -g 1001 quarkus && useradd -r -m -d /quarkus -s /sbin/nologin -g 1001 -u 1001 quarkus
+
+ENV HOME=/quarkus 
+ENV JBANG_DIR=$HOME/.jbang 
+ENV PATH=$JBANG_DIR/bin:$PATH
+WORKDIR $HOME
+
+# Install quarkus cli tool with user quarkus
+USER quarkus
+RUN curl -Ls https://sh.jbang.dev | bash -s - trust add https://repo1.maven.org/maven2/io/quarkus/quarkus-cli/ && curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --force quarkus@quarkusio
+
+# Fix permissions
+USER 0
+RUN chgrp -R 0 /quarkus && chmod -R g=u /quarkus
+USER quarkus
+
+CMD ["quarkus", "--help"]

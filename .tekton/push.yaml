@@ -70,7 +70,7 @@ spec:
                 #!/usr/bin/env bash
                 set -eux
                 # quarkus cli will compile, package jar, generate k8s/ocp manifests and deploy
-                quarkus build --no-tests -Dquarkus.kubernetes.deploy=true -Dquarkus.profile=pac
+                quarkus build --no-tests -Dquarkus.kubernetes.deploy=true -Dquarkus.profile=test
   workspaces:
   - name: source
     volumeClaimTemplate:
