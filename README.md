@@ -18,7 +18,7 @@ Technologies include:
 alias q='quarkus'
 q dev
 
-# access at http://localhost:8080
+# To access the app, hit http://localhost:8080 
 
 # To deploy and run quarkus application in an OpenShift cluster
 # (Required Operators: SeviceBinding, Crunchy Postgres for Kubernetes)
@@ -48,6 +48,28 @@ oc adm policy add-cluster-role-to-user clusterworkloadresourcemappings.servicebi
 # Alternatively
 oc apply -f .argocd/rolebinding.yaml
 ```
+* This repo has [OpenTelemetry](https://opentelemetry.io/docs/) and [Quarkus OpenTelemetry extension](https://quarkus.io/guides/opentelemetry) integrated to support local development using [podman play kube](https://docs.podman.io/en/stable/markdown/podman-play-kube.1.html); 
+```
+# The OTLP exporter can be enabled by (Note: dev mode only)
+#   %dev.quarkus.opentelemetry.enabled = true
+#   %dev.quarkus.opentelemetry.tracer.exporter.otlp.endpoint = http://localhost:4317
 
+# Jaeger is used as the backend
+podman play kube .container/otel-backend.yaml
+
+# To start an OpenTelemetry Collector
+podman play kube .container/otel-frontend.yaml
+
+# To check the pod status
+$ podman pod ps --ctr-names --ctr-status 
+POD ID        NAME           STATUS      CREATED         INFRA ID      NAMES                                              STATUS
+234fc5589e5b  otel-frontend  Running     23 seconds ago  f19a7e0dc9dd  otel-frontend-otel-collector,234fc5589e5b-infra    running,running
+35906910f484  otel-backend   Running     35 seconds ago  9844102db855  35906910f484-infra,otel-backend-jaeger-all-in-one  running,running
+
+# To access the Jaeger UI, hit http://localhost:16686
+# OTLP exporter is enabled for Dev mode only, and to shutdown and clean up
+podman pod rm --force otel-frontend
+podman pod rm --force otel-backend
+```  
 ---
-Date: 2022-07-28
+Date: 2022-08-03
