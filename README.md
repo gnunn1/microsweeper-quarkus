@@ -50,26 +50,29 @@ oc apply -f .argocd/rolebinding.yaml
 ```
 * This repo has [OpenTelemetry](https://opentelemetry.io/docs/) and [Quarkus OpenTelemetry extension](https://quarkus.io/guides/opentelemetry) integrated to support local development using [podman play kube](https://docs.podman.io/en/stable/markdown/podman-play-kube.1.html); 
 ```
-# The OTLP exporter can be enabled by (Note: dev mode only)
-#   %dev.quarkus.opentelemetry.enabled = true
-#   %dev.quarkus.opentelemetry.tracer.exporter.otlp.endpoint = http://localhost:4317
+# The OTLP exporter can be enabled by these configuration properties
+# Note: dev mode only for this demo
+%dev.quarkus.opentelemetry.enabled = true
+%dev.quarkus.opentelemetry.tracer.exporter.otlp.endpoint = http://localhost:4317
+# Issues: need to explicitly turn on builtin sampler 
+%dev.quarkus.opentelemetry.tracer.sampler=on
 
-# Jaeger is used as the backend
-podman play kube .container/otel-backend.yaml
-
-# To start an OpenTelemetry Collector
-podman play kube .container/otel-frontend.yaml
+# To facilitate the demo, copy these yaml configuation files from
+#   https://github.com/rhtevan/quick-quarkus/tree/main/.container
+# Start collector and jaeger containers in the same pod
+podman play kube .container/otel.yaml
 
 # To check the pod status
-$ podman pod ps --ctr-names --ctr-status 
-POD ID        NAME           STATUS      CREATED         INFRA ID      NAMES                                              STATUS
-234fc5589e5b  otel-frontend  Running     23 seconds ago  f19a7e0dc9dd  otel-frontend-otel-collector,234fc5589e5b-infra    running,running
-35906910f484  otel-backend   Running     35 seconds ago  9844102db855  35906910f484-infra,otel-backend-jaeger-all-in-one  running,running
+podman pod ps --ctr-names --ctr-status 
+
+POD ID        NAME        STATUS      CREATED         INFRA ID      NAMES                                                     STATUS
+861d58b636a4  otel        Running     26 seconds ago  4eaddf66e0ea  861d58b636a4-infra,otel-collector,otel-jaeger-all-in-one  running,running,running
 
 # To access the Jaeger UI, hit http://localhost:16686
+
 # OTLP exporter is enabled for Dev mode only, and to shutdown and clean up
-podman pod rm --force otel-frontend
-podman pod rm --force otel-backend
+podman pod rm --force otel
+podman pod ps --ctr-names --ctr-status 
 ```  
 ---
-Date: 2022-08-03
+Date: 2022-08-16
