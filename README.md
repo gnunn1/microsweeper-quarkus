@@ -34,7 +34,7 @@ oc delete servicebindings.binding.operators.coreos.com microsweeper-appservice-p
 ```
 # By default, a 'test' namespace/project need to be setup for PAC-based CI/CD
 # To create a PAC Repository at test namespace executes the following command
-oc apply -f .argocd/repository.yaml
+oc apply -f boot/argocd/repository.yaml
 ```
 * The Service Binding Operator [doc](https://redhat-developer.github.io/service-binding-operator/userguide/exposing-binding-data/rbac-requirements.html) and this [github issue](https://github.com/redhat-developer/service-binding-operator/issues/810) provide more details for the RBAC requirements.   
 (Bug: Not sure why need to have a clusterrolebinding for the user if it is not in a cluster-admin role)
@@ -46,7 +46,7 @@ oc adm policy add-cluster-role-to-user clusterworkloadresourcemappings.servicebi
 oc adm policy add-cluster-role-to-user clusterworkloadresourcemappings.servicebinding.io-v1alpha3-admin system:serviceaccount:test:pipeline
 
 # Alternatively
-oc apply -f .argocd/rolebinding.yaml
+oc apply -f boot/argocd/rolebinding.yaml
 ```
 * This repo has [OpenTelemetry](https://opentelemetry.io/docs/) and [Quarkus OpenTelemetry extension](https://quarkus.io/guides/opentelemetry) integrated to support local development using [podman play kube](https://docs.podman.io/en/stable/markdown/podman-play-kube.1.html); 
 ```
