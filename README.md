@@ -1,4 +1,4 @@
-Red Hat Microsweeper demo with Quarkus - Oct 4
+Red Hat Microsweeper demo with Quarkus
 ==========================
 
 This demo uses a number of cloud technologies to implement a simple game from the earlier days of computing: Minesweeper!
@@ -10,7 +10,7 @@ Technologies include:
 * JQuery-based Minesweeper written by [Nick Arocho](http://www.nickarocho.com/) and [available on GitHub](https://github.com/nickarocho/minesweeper).
 * Backend based on [Quarkus](https://quarkus.io) to persist scoreboard and provide a reactive frontend and backend connected to [Postgres](https://azure.microsoft.com/en-us/services/postgresql/).
 
-* Technologies demonstrated here includes: [Quarkus](https://quarkus.io), [Quarkus extensions](https://quarkus.io/version/main/guides/deploying-to-kubernetes#introduction-to-the-service-binding-operator), [Quarkiverse](https://github.com/quarkiverse/quarkiverse), [Service Binding Operator](https://github.com/redhat-developer/service-binding-operator#known-bindable-operators)
+* Technologies demonstrated here includes: [Quarkus](https://quarkus.io), [Quarkus extensions](https://quarkus.io/version/main/guides/deploying-to-kubernetes#introduction-to-the-service-binding-operator), [Quarkiverse](https://github.com/quarkiverse/quarkiverse), [Service Binding Operator](https://github.com/redhat-developer/service-binding-operator#known-bindable-operators), [Crunchy Postgres for Kubernetes](https://operatorhub.io/operator/postgresql)
 
 -----------
 ```
@@ -75,4 +75,4 @@ podman pod rm --force otel
 podman pod ps --ctr-names --ctr-status 
 ```  
 ---
-Date: 2022-09-28
+Date: 2022-11-23
