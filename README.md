@@ -3,7 +3,7 @@ Red Hat Microsweeper demo with Quarkus
 
 This demo uses a number of cloud technologies to implement a simple game from the earlier days of computing: Minesweeper!
 
-![Screenshot](docs/microsweeper.png)
+![Screenshot](doc/microsweeper.png)
 
 Technologies include:
 

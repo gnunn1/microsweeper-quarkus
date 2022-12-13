@@ -6,4 +6,4 @@ images:
     newName: quay.io/rhtevan/microsweeper-appservice:latest
 
 resources:
-  - ../../opt/apps
+  - ../../app
