@@ -30,7 +30,7 @@ oc delete all --selector=demo.redhat.com/name=microsweeper
 oc delete postgresclusters.postgres-operator.crunchydata.com postgresql
 oc delete servicebindings.binding.operators.coreos.com microsweeper-appservice-postgresql
 ```
-* This repo has PipelineAsCode integrated. Check this [gist](https://gist.github.com/rhtevan/5d0fc387109ecba9d1f1ec24091bfe36) for details
+* This repo has PipelineAsCode integrated. Check this [gist](https://gist.github.com/rhtevan/0337ea1211dddafde76be463aeb9eba0) for details
 ```
 # By default, a 'test' namespace/project need to be setup for PAC-based CI/CD
 # To create a PAC Repository at test namespace executes the following command
