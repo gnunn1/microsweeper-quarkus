@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    demo.redhat.com/vcs-url: https://github.com/rhtevan/microsweeper-quarkus.git
+    demo.redhat.com/vcs-url: https://github.com/gnunn1/microsweeper-quarkus.git
     app.openshift.io/vcs-url: <<unknown>>
     prometheus.io/scrape: "true"
     prometheus.io/path: /q/metrics
@@ -29,7 +29,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    demo.redhat.com/vcs-url: https://github.com/rhtevan/microsweeper-quarkus.git
+    demo.redhat.com/vcs-url: https://github.com/gnunn1/microsweeper-quarkus.git
     app.openshift.io/vcs-url: <<unknown>>
     prometheus.io/scrape: "true"
     prometheus.io/path: /q/metrics
@@ -50,7 +50,7 @@ spec:
   template:
     metadata:
       annotations:
-        demo.redhat.com/vcs-url: https://github.com/rhtevan/microsweeper-quarkus.git
+        demo.redhat.com/vcs-url: https://github.com/gnunn1/microsweeper-quarkus.git
         app.openshift.io/vcs-url: <<unknown>>
         prometheus.io/scrape: "true"
         prometheus.io/path: /q/metrics
@@ -82,7 +82,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
-    demo.redhat.com/vcs-url: https://github.com/rhtevan/microsweeper-quarkus.git
+    demo.redhat.com/vcs-url: https://github.com/gnunn1/microsweeper-quarkus.git
     app.openshift.io/vcs-url: <<unknown>>
   labels:
     app.kubernetes.io/name: microsweeper-appservice
