@@ -75,4 +75,4 @@ podman pod rm --force otel
 podman pod ps --ctr-names --ctr-status 
 ```  
 ---
-Date: 2023-9-25 12:29
+Date: 2023-9-25 12:36
