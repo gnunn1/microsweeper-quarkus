@@ -38,8 +38,8 @@ spec:
     workspaces:
       - name: source
       - name: basic-auth
-      - name: acs-central
-        optional: true
+      # - name: acs-central
+      #   optional: true
     tasks:
       - name: fetch-repository
         taskRef:
@@ -126,6 +126,6 @@ spec:
     - name: basic-auth
       secret:
         secretName: "{{ git_auth_secret }}"
-    - name: acs-central
-      secret:
-        secretName: roxsecrets
+    # - name: acs-central
+    #   secret:
+    #     secretName: roxsecrets
